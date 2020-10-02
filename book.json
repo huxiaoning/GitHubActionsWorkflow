@@ -1,0 +1,27 @@
+{
+    "title": "GitHub Action中文文档",
+    "description": "GitHub Action中文文档",
+    "author": "Jett",
+    "language": "zh-hans",
+    "root": ".",
+
+    "plugins": [
+        "github-buttons@2.1.0",
+        "edit-link",
+	"toggle-chapters"
+    ],
+
+    "pluginsConfig": {
+        "github-buttons": {
+            "repo": "huxiaoning/GitHubActionsWorkflow",
+            "types": [
+                "star"
+            ],
+            "size": "small"
+        },
+        "edit-link": {
+            "base": "https://github.com/huxiaoning/GitHubActionsWorkflow/edit/master",
+            "label": "Edit This Page"
+        }
+    }
+}
