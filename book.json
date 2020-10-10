@@ -13,14 +13,14 @@
 
     "pluginsConfig": {
         "github-buttons": {
-            "repo": "huxiaoning/GitHubActionsWorkflow",
+            "repo": "huxiaoning/action",
             "types": [
                 "star"
             ],
             "size": "small"
         },
         "edit-link": {
-            "base": "https://github.com/huxiaoning/GitHubActionsWorkflow/edit/master",
+            "base": "https://github.com/huxiaoning/action/edit/master",
             "label": "Edit This Page"
         }
     }
