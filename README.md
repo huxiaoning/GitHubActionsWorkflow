@@ -6,7 +6,7 @@
 
 
 
-[原文地址](https://docs.github.com/en/free-pro-team@latest/actions)
+[原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions)
 
 
 
