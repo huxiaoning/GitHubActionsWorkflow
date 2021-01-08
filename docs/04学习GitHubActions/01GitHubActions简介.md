@@ -30,4 +30,14 @@
 
 完整的事件列表可以查看[Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows).
 
+##### `Jobs`作业
+
+作业是一个步骤(`steps`)的集合。
+
+默认情况下，具有多个作业的工作流将并行运行这些作业。
+
+当然，是可以配置工作流按顺序运行作业的。
+
+例如，一个工作流可以有两个顺序的作业：构建和测试。其中测试作业依赖构建作业。如果构建作业失败了，测试作业将不会运行。
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
