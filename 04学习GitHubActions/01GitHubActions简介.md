@@ -125,4 +125,18 @@ $ git push
 
 可以到`GitHub`代码库中的`Actions`选项卡下面查看工作流的执行结果。
 
+#### 了解工作流配置文件
+
+| 示例                         | 说明                                                         |
+| :--------------------------- | :----------------------------------------------------------- |
+| `name: learn-github-actions` | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
+| `on: [push]`                 | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
+| `jobs:`                      | 组织`learn-github-actions`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
