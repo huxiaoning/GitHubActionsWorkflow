@@ -48,4 +48,14 @@
 
 作业中的第一个`step`都在同 一个`runner`上面执行，允许该`Job`中的`actions`共享数据。
 
+##### `Actions`操作
+
+`Actions`是独立的命令(`commands`)。
+
+`Actions`可以组合成`steps`来创建一个`Job`.
+
+我们可以创建自已的`actions`，也可以使用`GitHub`社区提供的`actions`。
+
+
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
