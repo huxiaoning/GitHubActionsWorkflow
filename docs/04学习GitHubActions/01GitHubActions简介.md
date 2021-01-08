@@ -76,4 +76,53 @@
 
 如何使用自已的`runners`可以查看[Hosting your own runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners).
 
+
+
+#### 创建一个示例工作流
+
+##### 1 准备一个基于`Maven`的`Java`项目
+
+```
+用Idea创建一个maven quick start项目即可。
+```
+
+##### 2 创建工作流配置文件
+
+```shell
+$ mkdir -p .github/workflows/
+$ vim .github/workflows/learn-github-actions.yml
+name: learn-github-actions
+on: [push]
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '9.0.4' # The JDK version to make available on the path.
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+      - uses: stCarolas/setup-maven@v4
+        with:
+          maven-version: 3.5.4
+      - run: mvn clean package
+      - run:  java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App
+      - run:  echo $(pwd)
+      - run:  ls -l
+```
+
+##### 3 推送提交到`GitHub`
+
+```shell
+$ git add .
+$ git commit -m 'UP'
+$ git push
+```
+
+这样一个新的工作流配置文件就被安装到你的代码库中了，并且它将会在每次推送变更时自动执行，包括这一次推送。
+
+可以到`GitHub`代码库中的`Actions`选项卡下面查看工作流的执行结果。
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)

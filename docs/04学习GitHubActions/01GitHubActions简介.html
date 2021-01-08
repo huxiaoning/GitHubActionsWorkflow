@@ -232,6 +232,40 @@
 <p>&#x6709;&#x5173;<code>GitHub</code>&#x6258;&#x7BA1;&#x7684;<code>runners</code>&#x53EF;&#x4EE5;&#x67E5;&#x770B;<a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/virtual-environments-for-github-hosted-runners" target="_blank">Virtual environments for GitHub-hosted runners</a>.</p>
 <p>&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6216;&#x7279;&#x5B9A;&#x7684;&#x786C;&#x4EF6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x81EA;&#x5DF2;&#x7684;<code>runner</code>&#x3002;</p>
 <p>&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x81EA;&#x5DF2;&#x7684;<code>runners</code>&#x53EF;&#x4EE5;&#x67E5;&#x770B;<a href="https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners" target="_blank">Hosting your own runners</a>.</p>
+<h4 id="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x5DE5;&#x4F5C;&#x6D41;">&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x5DE5;&#x4F5C;&#x6D41;</h4>
+<h5 id="1-&#x51C6;&#x5907;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;maven&#x7684;java&#x9879;&#x76EE;">1 &#x51C6;&#x5907;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;<code>Maven</code>&#x7684;<code>Java</code>&#x9879;&#x76EE;</h5>
+<pre><code>&#x7528;Idea&#x521B;&#x5EFA;&#x4E00;&#x4E2A;maven quick start&#x9879;&#x76EE;&#x5373;&#x53EF;&#x3002;
+</code></pre><h5 id="2-&#x521B;&#x5EFA;&#x5DE5;&#x4F5C;&#x6D41;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">2 &#x521B;&#x5EFA;&#x5DE5;&#x4F5C;&#x6D41;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h5>
+<pre><code class="lang-shell">$ mkdir -p .github/workflows/
+$ vim .github/workflows/learn-github-actions.yml
+name: learn-github-actions
+on: [push]
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: &apos;9.0.4&apos; # The JDK version to make available on the path.
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+      - uses: stCarolas/setup-maven@v4
+        with:
+          maven-version: 3.5.4
+      - run: mvn clean package
+      - run:  java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App
+      - run:  echo $(pwd)
+      - run:  ls -l
+</code></pre>
+<h5 id="3-&#x63A8;&#x9001;&#x63D0;&#x4EA4;&#x5230;github">3 &#x63A8;&#x9001;&#x63D0;&#x4EA4;&#x5230;<code>GitHub</code></h5>
+<pre><code class="lang-shell">$ git add .
+$ git commit -m &apos;UP&apos;
+$ git push
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5C31;&#x88AB;&#x5B89;&#x88C5;&#x5230;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x5E93;&#x4E2D;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x5C06;&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x63A8;&#x9001;&#x53D8;&#x66F4;&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;&#xFF0C;&#x5305;&#x62EC;&#x8FD9;&#x4E00;&#x6B21;&#x63A8;&#x9001;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5230;<code>GitHub</code>&#x4EE3;&#x7801;&#x5E93;&#x4E2D;&#x7684;<code>Actions</code>&#x9009;&#x9879;&#x5361;&#x4E0B;&#x9762;&#x67E5;&#x770B;&#x5DE5;&#x4F5C;&#x6D41;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;</p>
 <p><a href="https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions" target="_blank">&#x539F;&#x6587;&#x5730;&#x5740;</a></p>
 
                                 
@@ -272,7 +306,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GitHubActions简介","level":"1.2.1","depth":2,"previous":{"title":"学习GitHubActions","level":"1.2","depth":1,"path":"04学习GitHubActions/README.md","ref":"04学习GitHubActions/README.md","articles":[{"title":"GitHubActions简介","level":"1.2.1","depth":2,"path":"04学习GitHubActions/01GitHubActions简介.md","ref":"04学习GitHubActions/01GitHubActions简介.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github-buttons@2.1.0","edit-link","toggle-chapters"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"repo":"huxiaoning/action","types":["star"],"size":"small"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/huxiaoning/action/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"Jett","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GitHub Actions手册","language":"zh-hans","gitbook":"*","description":"GitHub Action手册"},"file":{"path":"04学习GitHubActions/01GitHubActions简介.md","mtime":"2021-01-08T15:48:53.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T15:49:00.517Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GitHubActions简介","level":"1.2.1","depth":2,"previous":{"title":"学习GitHubActions","level":"1.2","depth":1,"path":"04学习GitHubActions/README.md","ref":"04学习GitHubActions/README.md","articles":[{"title":"GitHubActions简介","level":"1.2.1","depth":2,"path":"04学习GitHubActions/01GitHubActions简介.md","ref":"04学习GitHubActions/01GitHubActions简介.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github-buttons@2.1.0","edit-link","toggle-chapters"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"repo":"huxiaoning/action","types":["star"],"size":"small"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/huxiaoning/action/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"Jett","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GitHub Actions手册","language":"zh-hans","gitbook":"*","description":"GitHub Action手册"},"file":{"path":"04学习GitHubActions/01GitHubActions简介.md","mtime":"2021-01-08T16:01:13.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T16:04:38.731Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
