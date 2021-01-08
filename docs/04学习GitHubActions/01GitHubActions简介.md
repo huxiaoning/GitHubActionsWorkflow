@@ -70,4 +70,10 @@
 
 `GitHub`托管的`runner`基于`Ubuntu Linux`、微软`Windows`和`macOS`。
 
+有关`GitHub`托管的`runners`可以查看[Virtual environments for GitHub-hosted runners](https://docs.github.com/en/free-pro-team@latest/actions/reference/virtual-environments-for-github-hosted-runners).
+
+如果你需要不同的操作系统或特定的硬件，你可以使用自已的`runner`。
+
+如何使用自已的`runners`可以查看[Hosting your own runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners).
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
