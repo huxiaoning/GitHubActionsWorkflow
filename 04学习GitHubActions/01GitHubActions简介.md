@@ -40,4 +40,12 @@
 
 例如，一个工作流可以有两个顺序的作业：构建和测试。其中测试作业依赖构建作业。如果构建作业失败了，测试作业将不会运行。
 
+##### `Steps`步骤
+
+步骤是可以在作业中运行命令的单个任务。
+
+一个步骤可以是一个`action`或一条`shell`命令。
+
+作业中的第一个`step`都在同 一个`runner`上面执行，允许该`Job`中的`actions`共享数据。
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
