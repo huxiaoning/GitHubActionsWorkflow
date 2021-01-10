@@ -142,6 +142,6 @@ $ git push
 | `- run: mvn clean package`                                   | 编译打包`Java`源代码。                                       |
 | `- run: java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App` | 运行`Java`程序                                               |
 | `- run: echo $(pwd)`                                         | 运行`Shell`命令，查看当前的工作目录<br />`/home/runner/work/actions-demo/actions-demo` |
-| `- run: ls -l`                                               | 运行`Shell`命令，查看工作目录里面有哪些文件。<br />发现`Java`工程根目录下的文件和目录都在。<br /> |
+| `- run: ls -l`                                               | 运行`Shell`命令，查看工作目录里面有哪些文件。<br />发现`Java`工程根目录下的文件和目录都在。 |
 
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
