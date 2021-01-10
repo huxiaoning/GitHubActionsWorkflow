@@ -134,8 +134,8 @@ $ git push
 | `jobs:`                   | 组织`run-java-workflow`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
 | `run-java-job`            | 在`jobs`下定义一个`ID`为`run-java-job`的`job`(任务)          |
 | `name: run-java-job`      | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
-| `runs-on: ubuntu-latest`  | 指定`job`运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
-| `steps:`                  |                                                              |
+| `runs-on: ubuntu-latest`  | 指定`job`(任务)运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
+| `steps:`                  | 组织`run-java-job`任务的所有步骤。<br />嵌套在此标记下的每一行都是一个单独的操作`action`。 |
 |                           |                                                              |
 |                           |                                                              |
 
