@@ -16,7 +16,7 @@
 
 工作流是您添加到存储库的自动化过程。
 
-`Workflows`由一个或多个`Jobs`组成。
+`Workflows`由一个或多个`Jobs`(任务)组成。
 
 工作流可用于在`GitHub`上构建、测试、打包、发布或部署项目。
 
@@ -30,23 +30,23 @@
 
 完整的事件列表可以查看[Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows).
 
-##### `Jobs`作业
+##### `Jobs`任务
 
-作业是一个步骤(`steps`)的集合。
+任务是一个步骤(`steps`)的集合。
 
-默认情况下，具有多个作业的工作流将并行运行这些作业。
+默认情况下，具有多个任务的工作流将并行运行这些作业。
 
-当然，是可以配置工作流按顺序运行作业的。
+当然，是可以配置工作流按顺序运行任务的。
 
-例如，一个工作流可以有两个顺序的作业：构建和测试。其中测试作业依赖构建作业。如果构建作业失败了，测试作业将不会运行。
+例如，一个工作流可以有两个顺序的任务：构建和测试。其中测试任务依赖构建任务。如果构建任务失败了，测试任务将不会运行。
 
 ##### `Steps`步骤
 
-步骤是可以在作业中运行命令的单个任务。
+步骤是可以在任务中运行命令的单个任务。
 
 一个步骤可以是一个`action`或一条`shell`命令。
 
-作业中的每一个`step`都在同 一个`runner`上面执行，允许该`Job`中的`actions`共享数据。
+任务中的每一个`step`都在同 一个`runner`上面执行，允许该`Job`中的`actions`共享数据。
 
 ##### `Actions`操作
 
@@ -132,10 +132,10 @@ $ git push
 | `name: run-java-workflow` | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
 | `on: [push]`              | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
 | `jobs:`                   | 组织`run-java-workflow`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
-| `run-java-job`            | 在`jobs`下定义一个`ID`为`run-java-job`的`job`                |
+| `run-java-job`            | 在`jobs`下定义一个`ID`为`run-java-job`的`job`(任务)          |
 | `name: run-java-job`      | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
 | `runs-on: ubuntu-latest`  | 指定`job`运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
-|                           |                                                              |
+| `steps:`                  |                                                              |
 |                           |                                                              |
 |                           |                                                              |
 
