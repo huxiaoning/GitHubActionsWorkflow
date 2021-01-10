@@ -136,7 +136,7 @@ $ git push
 | `name: run-java-job`          | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
 | `runs-on: ubuntu-latest`      | 指定`job`(任务)运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
 | `steps:`                      | 组织`run-java-job`任务的所有步骤。<br />嵌套在此标记下的每一行都是一个单独的操作`action`。 |
-| `- uses: actions/checkout@v2` | 使用一个叫`actions/checkout`的社区`action`,使用其`v2`版本。<br />这个操作检出你的代码库并下载到任务运行的`runner`上面。<br />这一步是必须的操作，因为你的任务一定是针对你的代码库的，如运行编译打包运行你的代码、使用你代码库中定义的`action`，都必须签出你的代码。 |
+| `- uses: actions/checkout@v2` | 使用一个叫`actions/checkout`的社区`action`,使用其`v2`版本。<br />这个操作检出你的代码库并下载到任务运行的`runner`上面。<br />这一步是必须的操作，因为你的任务一定是针对你的代码库的，如编译打包运行你的代码、使用你代码库中定义的`action`，都必须签出你的代码。 |
 |                               |                                                              |
 
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
