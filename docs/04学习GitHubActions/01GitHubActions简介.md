@@ -144,4 +144,12 @@ $ git push
 | `- run: echo $(pwd)`                                         | 运行`Shell`命令，查看当前的工作目录<br />`/home/runner/work/actions-demo/actions-demo` |
 | `- run: ls -l`                                               | 运行`Shell`命令，查看工作目录里面有哪些文件。<br />发现`Java`工程根目录下的文件和目录都在。 |
 
+##### 步骤说明
+
+`- uses: actions/checkout@v2`使用社区预定义的操作
+
+`- run: mvn clean package`使用`Shell`命令
+
+查找和自定义操作(`action`)请看下一章。
+
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
