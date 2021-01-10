@@ -90,12 +90,12 @@
 
 ```shell
 $ mkdir -p .github/workflows/
-$ vim .github/workflows/learn-github-actions.yml
-name: learn-github-actions
-on: [push]
+$ vim .github/workflows/run-java-workflow.yml
+name: run-java-workflow
+on: [ push ]
 jobs:
-  my-job:
-    name: My Job
+  run-java-job:
+    name: run-java-job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -108,9 +108,9 @@ jobs:
         with:
           maven-version: 3.5.4
       - run: mvn clean package
-      - run:  java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App
-      - run:  echo $(pwd)
-      - run:  ls -l
+      - run: java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App
+      - run: echo $(pwd) # /home/runner/work/actions-demo/actions-demo
+      - run: ls -l
 ```
 
 ##### 3 推送提交到`GitHub`
@@ -127,16 +127,16 @@ $ git push
 
 #### 了解工作流配置文件
 
-| 示例                         | 说明                                                         |
-| :--------------------------- | :----------------------------------------------------------- |
-| `name: learn-github-actions` | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
-| `on: [push]`                 | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
-| `jobs:`                      | 组织`learn-github-actions`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
+| 示例                      | 说明                                                         |
+| :------------------------ | :----------------------------------------------------------- |
+| `name: run-java-workflow` | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
+| `on: [push]`              | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
+| `jobs:`                   | 组织`run-java-workflow`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
+| `run-java-job`            | 在`jobs`下定义一个`ID`为`run-java-job`的`job`                |
+| `name: run-java-job`      | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
+| `runs-on: ubuntu-latest`  | 指定`job`运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
+|                           |                                                              |
+|                           |                                                              |
+|                           |                                                              |
 
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
