@@ -127,16 +127,21 @@ $ git push
 
 #### 了解工作流配置文件
 
-| 示例                          | 说明                                                         |
-| :---------------------------- | :----------------------------------------------------------- |
-| `name: run-java-workflow`     | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
-| `on: [push]`                  | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
-| `jobs:`                       | 组织`run-java-workflow`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
-| `run-java-job`                | 在`jobs`下定义一个`ID`为`run-java-job`的`job`(任务)          |
-| `name: run-java-job`          | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
-| `runs-on: ubuntu-latest`      | 指定`job`(任务)运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
-| `steps:`                      | 组织`run-java-job`任务的所有步骤。<br />嵌套在此标记下的每一行都是一个单独的操作`action`。 |
-| `- uses: actions/checkout@v2` | 使用一个叫`actions/checkout`的社区`action`,使用其`v2`版本。<br />这个操作检出你的代码库并下载到任务运行的`runner`上面。<br />这一步是必须的操作，因为你的任务一定是针对你的代码库的，如编译打包运行你的代码、使用你代码库中定义的`action`，都必须签出你的代码。 |
-|                               |                                                              |
+| 示例                                                         | 说明                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `name: run-java-workflow`                                    | 可选 - 工作流的名字。<br />它将会出现在`GitHub`代码库的`Actions`选项卡中。<br />建议与`yaml`文件名同名。 |
+| `on: [push]`                                                 | 指定触发工作流的事件为`push`。<br />可以指定特定的分支、路径、或`tags`。<br />语法示例可以查看["`Workflow syntax for GitHub Actions.`"](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths) |
+| `jobs:`                                                      | 组织`run-java-workflow`工作流中的所有`job`。<br />即所有`job`都要配置在`jobs`中。 |
+| `run-java-job`                                               | 在`jobs`下定义一个`ID`为`run-java-job`的`job`(任务)          |
+| `name: run-java-job`                                         | 定义`job`的名称为`run-java-job`<br />建议与`job`的`ID`一致。 |
+| `runs-on: ubuntu-latest`                                     | 指定`job`(任务)运行的虚拟环境为`Ubuntu Linux Server`,<br />表示这个任务会在一个由`GitHub`l托管的纯净的虚拟机上面运行。<br />语法示例可以查看["Workflow syntax for GitHub Actions."](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) |
+| `steps:`                                                     | 组织`run-java-job`任务的所有步骤。<br />嵌套在此标记下的每一行都是一个单独的操作`action`。 |
+| `- uses: actions/checkout@v2`                                | 使用一个叫`actions/checkout`的社区`action`,使用其`v2`版本。<br />这个操作检出你的代码库并下载到任务运行的`runner`上面。<br />这一步是必须的操作，因为你的任务一定是针对你的代码库的，如编译打包运行你的代码、使用你代码库中定义的`action`，都必须签出你的代码。 |
+| `- uses: actions/setup-java@v1`                              | 安装`JDK`                                                    |
+| `- uses: stCarolas/setup-maven@v4`                           | 安装`Maven`                                                  |
+| `- run: mvn clean package`                                   | 编译打包`Java`源代码。                                       |
+| `- run: java -cp target/actions-demo-1.0-SNAPSHOT.jar org.joey.App` | 运行`Java`程序                                               |
+| `- run: echo $(pwd)`                                         | 运行`Shell`命令，查看当前的工作目录<br />`/home/runner/work/actions-demo/actions-demo` |
+| `- run: ls -l`                                               | 运行`Shell`命令，查看工作目录里面有哪些文件。<br />发现`Java`工程根目录下的文件和目录都在。<br />![image-20210110220940982](https://raw.githubusercontent.com/huxiaoning/img/master/20210110220943.png) |
 
 [原文地址](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
