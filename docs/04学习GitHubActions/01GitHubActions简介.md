@@ -1,18 +1,18 @@
-### `GitHub Actions`简介
+## `GitHub Actions`简介
 
 了解`GitHub Actions`的核心概念和各种组件,展示一个示例，演示如何将自动化添加到存储库中。
 
-#### 概览
+### 概览
 
 `GitHub Actions`是事件驱动的，这意味着你可以在指定的事件发生后运行一系列命令。
 
 比如当你`push`代码到仓库时，就可以执行你的测试脚本的命令。
 
-#### `GitHub Actions`组件
+### `GitHub Actions`组件
 
 ![](https://docs.github.com/assets/images/help/images/overview-actions-design.png)
 
-##### `Workflows`(工作流)
+#### `Workflows`(工作流)
 
 工作流是您添加到存储库的自动化过程。
 
@@ -20,7 +20,7 @@
 
 工作流可用于在`GitHub`上构建、测试、打包、发布或部署项目。
 
-##### Events(事件)
+#### Events(事件)
 
 事件是触发工作流的特定活动。
 
@@ -30,7 +30,7 @@
 
 完整的事件列表可以查看[Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows).
 
-##### `Jobs`任务
+#### `Jobs`任务
 
 任务是一个步骤(`steps`)的集合。
 
@@ -40,7 +40,7 @@
 
 例如，一个工作流可以有两个顺序的任务：构建和测试。其中测试任务依赖构建任务。如果构建任务失败了，测试任务将不会运行。
 
-##### `Steps`步骤
+#### `Steps`步骤
 
 步骤是可以在任务中运行命令的单个任务。
 
@@ -48,7 +48,7 @@
 
 任务中的每一个`step`都在同 一个`runner`上面执行，允许该`Job`中的`actions`共享数据。
 
-##### `Actions`操作
+#### `Actions`操作
 
 `Actions`是独立的命令(`commands`)。
 
@@ -56,7 +56,7 @@
 
 我们可以创建自已的`actions`，也可以使用`GitHub`社区提供的`actions`。
 
-##### `Runners`运行器
+#### `Runners`运行器
 
 一个`runner`是一个安装了[GitHub Actions runner application](https://github.com/actions/runner)的服务器。
 
@@ -78,15 +78,15 @@
 
 
 
-#### 创建一个示例工作流
+### 创建一个示例工作流
 
-##### 1 准备一个基于`Maven`的`Java`项目
+#### 1 准备一个基于`Maven`的`Java`项目
 
 ```
 用Idea创建一个maven quick start项目即可。
 ```
 
-##### 2 创建工作流配置文件
+#### 2 创建工作流配置文件
 
 ```shell
 $ mkdir -p .github/workflows/
@@ -113,7 +113,7 @@ jobs:
       - run: ls -l
 ```
 
-##### 3 推送提交到`GitHub`
+#### 3 推送提交到`GitHub`
 
 ```shell
 $ git add .
@@ -125,7 +125,7 @@ $ git push
 
 可以到`GitHub`代码库中的`Actions`选项卡下面查看工作流的执行结果。
 
-#### 了解工作流配置文件
+### 了解工作流配置文件
 
 | 示例                                                         | 说明                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -144,7 +144,7 @@ $ git push
 | `- run: echo $(pwd)`                                         | 运行`Shell`命令，查看当前的工作目录<br />`/home/runner/work/actions-demo/actions-demo` |
 | `- run: ls -l`                                               | 运行`Shell`命令，查看工作目录里面有哪些文件。<br />发现`Java`工程根目录下的文件和目录都在。 |
 
-##### 步骤说明
+#### 步骤说明
 
 `- uses: actions/checkout@v2`使用社区预定义的操作
 
