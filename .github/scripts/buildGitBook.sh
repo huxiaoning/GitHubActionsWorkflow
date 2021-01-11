@@ -1,6 +1,6 @@
 #!/bin/bash
 java -jar -Dwork.dir=$(pwd) ./.github/scripts/gitbook-helper-1.0-SNAPSHOT.jar
-rm -rf _book docs
+rm -rf docs
 gitbook build
 mv _book docs
 git add .
