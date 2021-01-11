@@ -14,6 +14,10 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
       - run: gitbook install
-      - name: Run build script
-        run: bash ./.github/scripts/buildGitBook.sh
-        shell: bash
+      - run: java -jar -Dwork.dir=$(pwd) ./.github/scripts/gitbook-helper-1.0-SNAPSHOT.jar
+      - run: rm -rf docs
+      - run: gitbook build
+      - run: mv _book docs
+      - run: git add .
+      - run: git commit -m "UP"
+      - run: git push
