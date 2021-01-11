@@ -12,7 +12,7 @@ jobs:
           java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
           architecture: x64 # (x64 or x86) - defaults to x64
       - uses: actions/setup-node@v1
-      - run: npm install -g gitbook
+      - run: npm install -g gitbook-cli
       - name: Run build script
         run: bash ./.github/scripts/buildGitBook.sh
         shell: bash
