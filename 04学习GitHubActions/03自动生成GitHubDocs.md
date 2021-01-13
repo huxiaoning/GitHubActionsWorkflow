@@ -35,4 +35,4 @@ jobs:
       - run: git push # git@github.com:huxiaoning/action.git
 ```
 
-试一下
+试一下吧
