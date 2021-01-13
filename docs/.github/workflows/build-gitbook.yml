@@ -16,10 +16,8 @@ jobs:
           architecture: x64 # (x64 or x86) - defaults to x64
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
-      - run: npm install -g gitbook-summary
       - run: gitbook install
       - run: java -jar -Dwork.dir=$(pwd) ./.github/scripts/gitbook-helper-1.0-SNAPSHOT.jar
-      - run: book sm
       - run: rm -rf docs
       - run: gitbook build
       - run: mv _book docs
