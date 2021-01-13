@@ -1,5 +1,8 @@
 name: build-gitbook
-on: [ push ]
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
 jobs:
   build-gitbook-job:
     name: build-gitbook-job
@@ -20,4 +23,4 @@ jobs:
       - run: mv _book docs
       - run: git add .
       - run: git commit -m "UP"
-      - run: git push
+      - run: git push git@github.com:huxiaoning/action.git
