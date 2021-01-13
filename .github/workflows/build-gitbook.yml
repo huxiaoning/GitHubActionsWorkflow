@@ -25,4 +25,4 @@ jobs:
       - run: git config --global user.name "secrets.NAME"
       - run: git add .
       - run: git commit -m "UP"
-      - run: git push git@github.com:huxiaoning/action.git
+      - run: git push # git@github.com:huxiaoning/action.git
