@@ -1,3 +1,10 @@
+## 自动生成`GitHub Docs`
+
+
+
+### 我自已的脚本
+
+```yaml
 name: build-gitbook
 on:
   push:
@@ -26,3 +33,5 @@ jobs:
       - run: git add .
       - run: git commit -m "UP"
       - run: git push # git@github.com:huxiaoning/action.git
+```
+
