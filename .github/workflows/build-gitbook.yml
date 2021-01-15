@@ -1,8 +1,5 @@
 name: build-gitbook
-on:
-  push:
-    paths-ignore:
-      - 'docs/**'
+on: [push]
 jobs:
   build-gitbook-job:
     name: build-gitbook-job
