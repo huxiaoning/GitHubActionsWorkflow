@@ -11,10 +11,13 @@ jobs:
           java-version: '9.0.4' # The JDK version to make available on the path.
           java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
           architecture: x64 # (x64 or x86) - defaults to x64
+      - uses: stCarolas/setup-maven@v4
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
       - run: gitbook install
-      - run: java -jar -Dwork.dir=$(pwd) ./.github/scripts/gitbook-helper-1.0-SNAPSHOT.jar
+      - run: git clone git@github.com:huxiaoning/gitbook-helper.git
+      - run: cd gitbook-helper && mvn clean package
+      - run: java -jar -Dwork.dir=$(pwd) ./gitbook-helper/target/gitbook-helper-1.0-SNAPSHOT.jar
       - run: rm -rf docs
       - run: gitbook build
       - run: mv _book docs
