@@ -1,3 +1,6 @@
+### 提交到docs分支
+
+```yaml
 name: build-gitbook
 on: [ push ]
 jobs:
@@ -24,3 +27,5 @@ jobs:
       - run: git add .
       - run: git commit -m "UP"
       - run: git push -u origin docs
+```
+
