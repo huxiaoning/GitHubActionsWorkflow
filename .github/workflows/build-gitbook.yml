@@ -19,9 +19,8 @@ jobs:
       - run: gitbook install
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
-      - run: git clone git@github.com:huxiaoning/gitbook-helper.git
-      - run: cd gitbook-helper && mvn clean package
-      - run: java -jar -Dwork.dir=$(pwd) ./gitbook-helper/target/gitbook-helper-1.0-SNAPSHOT.jar
+      - run: wget https://github.com/huxiaoning/gitbook-helper/releases/download/1.0/gitbook-helper-1.0-SNAPSHOT.jar
+      - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
       - run: rm -rf docs
       - run: gitbook build
       - run: mv _book docs
