@@ -2,3 +2,5 @@ _book
 node_modules
 .idea
 *.iml
+gitbook-helper
+gitbook-helper-1.0-SNAPSHOT.jar
