@@ -21,6 +21,7 @@ jobs:
       - run: mv _book docs
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
+      - run: git branch
       - run: git add .
       - run: git commit -m "UP"
-      - run: git push -u origin docs
+      - run: git push origin docs
