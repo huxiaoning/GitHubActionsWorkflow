@@ -40,4 +40,5 @@ jobs:
       - run: ls -a docs
       - run: ls -a
       - run: ls -a docs/gitbook/images
+      - run: shopt -s  extglob
       - run: shopt -s
