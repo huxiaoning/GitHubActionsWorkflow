@@ -2,6 +2,7 @@ name: generate-docs
 on: [ push ]
 jobs:
   generate-docs:
+    name: generate-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,11 +25,13 @@ jobs:
           name: docs
           path: _book
   upload-docs:
+    name: upload-docs
     needs: generate-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: 'docs'
+        with:
+          ref: 'docs'
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
       - name: Download Docs
