@@ -1,11 +1,11 @@
 ### 提交到docs分支
 
 ```yaml
-name: build-gitbook
+name: generate-docs
 on: [ push ]
 jobs:
-  build-gitbook-job:
-    name: build-gitbook-job
+  generate-docs:
+    name: generate-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,16 +17,30 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
       - run: gitbook install
-      - run: wget https://github.com/huxiaoning/gitbook-helper/releases/download/1.0/gitbook-helper-1.0-SNAPSHOT.jar
-      - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
-      - run: rm -rf docs
-      - run: gitbook build
-      - run: mv _book docs
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
-      - run: git add .
-      - run: git commit -m "UP"
-      - run: git push -u origin docs
+      - run: wget https://github.com/huxiaoning/gitbook-helper/releases/download/1.0/gitbook-helper-1.0-SNAPSHOT.jar
+      - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
+      - run: gitbook build
+      - name: Upload Docs
+          uses: actions/upload-artifact@v1
+          with:
+            name: docs
+            path: _book
+  upload-docs:
+    name: upload-docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        ref: 'docs'
+      - run: git config --global user.email "secrets.EMAIL"
+      - run: git config --global user.name "secrets.NAME"
+      - name: Download Docs
+        uses: actions/download-artifact@v2
+        with:
+          name: docs
+      - run: ls
+
 ```
 
 没有成功
