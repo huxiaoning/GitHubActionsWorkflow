@@ -29,6 +29,7 @@ jobs:
     needs: generate-docs
     runs-on: ubuntu-latest
     steps:
+      - run: find . -not -name ".git"
       - uses: actions/checkout@v2
         with:
           ref: 'docs'
