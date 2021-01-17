@@ -34,10 +34,10 @@ jobs:
           ref: 'docs'
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
-      - name: Download Docs
-        uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v2
         with:
           name: docs
       - run: ls -a docs
       - run: ls -a
       - run: ls -a docs/gitbook/images
+      - run: shopt -s
