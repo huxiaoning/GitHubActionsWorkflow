@@ -29,10 +29,10 @@ jobs:
     needs: generate-docs
     runs-on: ubuntu-latest
     steps:
-      - run: find . -not -name ".git"
       - uses: actions/checkout@v2
         with:
           ref: 'docs'
+      - run: find . -not -name ".git"
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
       - uses: actions/download-artifact@v2
