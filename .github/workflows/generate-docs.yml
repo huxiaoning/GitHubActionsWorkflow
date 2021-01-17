@@ -38,5 +38,5 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: docs
-      - run: ls docs
-      - run: ls
+      - run: ls -a docs
+      - run: ls -a
