@@ -2,7 +2,10 @@
 
 ```yaml
 name: generate-docs
-on: [ push ]
+on:
+  push:
+    branches:
+      - master
 jobs:
   generate-docs:
     name: generate-docs
@@ -17,13 +20,10 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
       - run: gitbook install
-      - run: git config --global user.email "secrets.EMAIL"
-      - run: git config --global user.name "secrets.NAME"
       - run: wget https://github.com/huxiaoning/gitbook-helper/releases/download/1.0/gitbook-helper-1.0-SNAPSHOT.jar
       - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
       - run: gitbook build
-      - name: Upload Docs
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: docs
           path: _book
@@ -35,7 +35,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: 'docs'
-      - run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t -I % rm -rf %
+      - name: 删除除.git目录外的所有文件(夹)
+        run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t -I % rm -rf %
       - uses: actions/download-artifact@v2
         with:
           name: docs
