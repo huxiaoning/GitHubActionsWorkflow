@@ -20,10 +20,10 @@ jobs:
       - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
       - run: gitbook build
       - name: Upload Docs
-          uses: actions/upload-artifact@v1
-          with:
-            name: docs
-            path: _book
+        uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: _book
   upload-docs:
     needs: generate-docs
     name: upload-docs
