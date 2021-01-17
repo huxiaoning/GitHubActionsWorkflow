@@ -23,24 +23,26 @@ jobs:
       - run: java -jar -Dwork.dir=$(pwd) gitbook-helper-1.0-SNAPSHOT.jar
       - run: gitbook build
       - name: Upload Docs
-          uses: actions/upload-artifact@v1
-          with:
-            name: docs
-            path: _book
+        uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: _book
   upload-docs:
     name: upload-docs
+    needs: generate-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: 'docs'
-      - run: git config --global user.email "secrets.EMAIL"
-      - run: git config --global user.name "secrets.NAME"
-      - name: Download Docs
-        uses: actions/download-artifact@v2
+        with:
+          ref: 'docs'
+      - run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t rm -rf
+      - uses: actions/download-artifact@v2
         with:
           name: docs
-      - run: ls
+      - run: git config --global user.email "secrets.EMAIL"
+      - run: git config --global user.name "secrets.NAME"
+      - run: git add .
+      - run: git commit -m 'UP'
+      - run: git push
 
 ```
-
-没有成功1
