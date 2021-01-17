@@ -2,7 +2,6 @@ name: generate-docs
 on: [ push ]
 jobs:
   generate-docs:
-    name: generate-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +25,6 @@ jobs:
           path: _book
   upload-docs:
     needs: generate-docs
-    name: upload-docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
