@@ -39,7 +39,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: docs
-      - run: ls -a
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
       - run: git add .
@@ -48,4 +47,6 @@ jobs:
 
 ```
 
-1
+### `GitHub Docs`设置
+
+![image-20210117233747803](https://raw.githubusercontent.com/huxiaoning/img/master/20210117233749.png)
