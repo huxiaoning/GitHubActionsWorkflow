@@ -35,10 +35,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: 'docs'
-      - run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t rm -rf
+      - run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t -I % rm -rf %
       - uses: actions/download-artifact@v2
         with:
           name: docs
+      - run: ls -a
       - run: git config --global user.email "secrets.EMAIL"
       - run: git config --global user.name "secrets.NAME"
       - run: git add .
