@@ -34,6 +34,7 @@ jobs:
           ref: 'docs'
       - run: ls -a
       - run: ls -a | grep -v '^.git$' | grep -v '^.$' | grep -v '^..$' | xargs -t -I % rm -rf %
+      - run: ls -a
       - uses: actions/download-artifact@v2
         with:
           name: docs
