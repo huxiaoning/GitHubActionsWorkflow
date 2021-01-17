@@ -39,3 +39,4 @@ jobs:
         with:
           name: docs
       - run: ls docs
+      - run: ls
